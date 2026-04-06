@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchCategories, fetchItems, setActiveCategory, setOffset } from '../store/slices/catalogSlice';
 import ProductCard from './ProductCard';
 import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
 export default function Catalog({ showSearch = false }) {
   const dispatch = useDispatch();
@@ -65,7 +66,9 @@ export default function Catalog({ showSearch = false }) {
       </div>
 
       {itemsStatus === 'loading' && <Loader />}
-      {itemsStatus === 'error' && <p>Ошибка загрузки каталога</p>}
+      {itemsStatus === 'error' && (
+      <ErrorMessage onRetry={() => dispatch(fetchItems({ categoryId: activeCategory, offset, q: queryParam }))} />
+      )}
       
       {itemsStatus !== 'loading' && hasMore && items.length >= 6 && (
         <div className="text-center">
