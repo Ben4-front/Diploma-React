@@ -25,12 +25,10 @@ section {
 
 
 
-/* Common Styles */
 .invisible {
   opacity: 0;
 }
 
-/* Header */
 .header-controls-pics {
   display: flex;
   justify-content: space-between;
@@ -304,4 +302,21 @@ h2, .h2 {
 .btn-outline-primary:hover {
   background-color: #727e86;
   border-color: #727e86;
+}
+
+.top-sales .row,
+.catalog .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.top-sales .col-4,
+.catalog .col-4 {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.catalog-item-card {
+  width: 100%;
 }
